@@ -1,77 +1,180 @@
 # gravitationalWAVS - Projekthandbuch
 
-![Poster](images/poster.png)
+![Titel](images/title.png)
+
+## TLDR
+
+**gravitationalWAVS** ist eine interaktive 3D-Audio-Installation zur psychoakustischen Vermittlung von Gravitationswellen und Raumzeit-Dehnungen in Museums- und Wissenschaftskontexten. Über einen kabellosen, sputnik-inspirierten Haptik-Controller (ESP32/IMU via OSC) steuern Rezipient\*innen die Orbits zweier gekoppelter Schwarzer Löcher in einem 3D-Klangfeld. Das System wird vollständig als autarke Standalone-Applikation in Max 9 mit IRCAM SPAT5 (Higher Order Ambisonics) umgesetzt, wobei mathematische Trägheitsfilter (Inertia) eine spürbare Illusion von physischer Masse im Raum erzeugen.
+
+## Inhaltsverzeichnis
+
+- [TLDR](#tldr)
+- [Konzept](#konzept)
+- [Wissenschaftliche & Technische Beratung](#wissenschaftliche--technische-beratung)
+- [Arbeitspakete](#arbeitspakete)
+- [Zeitplanung](#zeitplanung)
+- [Ressourcenplanung](#ressourcenplanung)
+  - [Materialien & Software-Lizenzen](#materialien--software-lizenzen)
+  - [Räume](#räume)
+  - [Literatur und Recherche](#literatur-und-recherche)
+- [Chancen und Risiken](#chancen-und-risiken)
+- [Erwarteter Kompetenzgewinn](#erwarteter-kompetenzgewinn)
+- [Software](#software)
+- [Hardware](#hardware)
+- [Werbung](#werbung)
+
+---
+
+## Konzept
+
+Das Ziel des Projekts **GRAVITATIONAL WAVs** ist es, ein fundamentales Phänomen des Universums – die 2015 erstmals gemessenen Gravitationswellen – interaktiv, haptisch und psychoakustisch greifbar zu machen. Wenn massereiche Objekte wie Schwarze Löcher oder Neutronensterne kollidieren, stauchen und dehnen sie die Raumzeit.
+
+In der Installation wird dieses Prinzip in ein dreidimensionales Klangfeld übersetzt:
+
+1. **Cosmic Microwave Background (CMB):** Ein fundamentales, waberndes Hintergrundrauschen repräsentiert die kosmische Mikrowellen-Hintergrundstrahlung.
+2. **Binary Black Hole System:** Zwei gekoppelte Soundobjekte simulieren zwei einander umkreisende Schwarze Löcher.
+3. **Testpartikel-Ring:** Ein virtueller Ring aus Soundquellen macht die Polarisation ($h_+$ und $h_\times$) der Raumzeit-Dehnung auditiv erfahrbar.
+4. **Interaktiver Controller & Trägheits-Engine:** Über ein physisches Objekt mit Gyroskop greifen die Zuhörer direkt in das System ein. Über mathematische Trägheitsfilter (Inertia) besitzen die Schwarzen Löcher eine spürbare Masse: Bei einer plötzlichen Richtungsänderung fliegt das System organisch weiter und dreht zeitverzögert ab. Es entsteht eine haptische Illusion von Masse im Raum.
+
+---
+
+## Wissenschaftliche & Technische Beratung
+
+Im Rahmen der Konzeption und technischen Evaluation wurden Expertenkonsultationen durchgeführt, um die optimale Architektur für Barrierefreiheit, Performance und Weitergabe an Hochschulen und Museen zu bestimmen:
+
+* **Gespräch mit Prof. Frank Melchior:**  
+  Prof. Melchior betonte die Wichtigkeit einer direkten, kohärenten Raumklang-Engine für wissenschaftliche und künstlerische Exponate. Er bekräftigte die Empfehlung, auf eine native Aufbereitung in Max mit IRCAM SPAT5 zu setzen, um eine präzise psychoakustische Kontrolle über Higher Order Ambisonics (HOA) zu gewährleisten.
+
+* **Austausch mit Eric Raynaud (aka Fraction, Entwickler von XP4Live):**  
+  Im direkten Austausch riet Raynaud explizit davon ab, sein eigenes Produkt *XP4Live* oder DAW-Infrastrukturen als Zwischenschicht für dieses spezifische Vorhaben zu nutzen. Er empfahl nachdrücklich, SPAT5 direkt nativ in der Max-Umgebung anzusteuern, da dies maximale Flexibilität, niedrigste Latenzen und vollständige Unabhängigkeit von Drittanbieter-Plugins bietet.
+
+Auf Basis dieser Expertenratschläge wurde die Minimal-Fallback-Lösung (Ableton Live + M4L/XP4L) verworfen und die **reine Max 9 Standalone-Architektur** als Hauptpfad definiert.
+
+---
 
 ## Arbeitspakete
 
-### Sample-Recherche
+Das Projekt umfasst ein Gesamtvolumen von über **500 Arbeitsstunden** bis Mitte Januar und gliedert sich in folgende Hauptarbeitspakete (AP):
 
-#### ESA/NASA Daten
+### AP1: Hardware-Prototyping & Sensorik
 
-### wissenschaftliche Grundlagen
+- Gehäuseentwicklung im Sputnik/Vanguard/Webb-Teleskop-Look (CAD, 3D-Druck mit PLA).
+- Schaltungsentwurf, LiPo-Lademanagement & Löt-Assembly (Seeed Studio XIAO ESP32-C6 + Adafruit BNO085 IMU).
+- Firmware-Entwicklung (C++/Arduino): Sensor-Fusion, Kalibrierung & Low-Latency OSC-Streaming via Wi-Fi.
 
-#### Gravitationswellen und mathematische Berechnungen
+### AP2: Max 9 Systemarchitektur & Mathematik
 
-### Hardwareprototyp
+- Aufbau des Max 9 Standalone-Frameworks & OSC-Parsing.
+- **Inertia-Engine in JavaScript:** Programmierung der mathematischen Trägheitsberechnung, Beschleunigung, Impulserhaltung und gekoppelter Kepler-Bahnen.
+- Entwurf der interaktiven Benutzeroberfläche (UI) für Monitoring, Kalibrierung und Perspektivsteuerung.
 
-#### Hardwareauswahl
+### AP3: Spatial Audio & IRCAM SPAT5 Integration
 
-### Softwartests
+- Einbindung und Konfiguration von IRCAM SPAT5 für Higher Order Ambisonics (HOA).
+- Implementierung der räumlichen Trajektorien, Distanz-Attenuations-Filter und Hall-Dämpfungen.
+- Audio-Routing via Dante Virtual Soundcard zur flexiblen Ansteuerung von Mehrkanalsystemen (z. B. 7.1.4 Studio-Array).
 
-#### Softwareauswahl
+### AP4: Sounddesign & Synthese
 
-##### Ableton Live
+- Klangsynthese in Max (FM-, Granular- und Rauschsynthese für CMB, Schwarze Löcher und Partikelring).
+- Erstellung psychoakustischer Modulations-Patterns gekoppelt an die physikalischen Raumzeit-Parameter.
 
-Mit Max for Live und SPAT Bundle von Music Unit oder XP for Live
+### AP5: Tests, Einmessen & Feinschliff
 
-##### Max9
+- Testläufe im 3D-Audio-Labor der Fachhochschule, Einmessen der Speaker-Decodes.
+- Haptik- und Usability-Tests mit Ausstellungsbesuchern/Testpersonen zur Verifikation der kontinuierlichen Raumtrajektorien.
 
-direkt mit ircam spat
+### AP6: Dokumentation, Paper & Exponat-Aufbereitung
 
-#### Eignungsprüfung
+- Erstellung des Projekthandbuchs, technische Dokumentation für Open-Source-Release.
+- Vorbereitung auf die Projektschau/Vernissage und wissenschaftliche Weiterverwendung (Promotion).
+
+---
 
 ## Zeitplanung
 
-| Zeitraum | Arbeitspaket | Arbeitszeit |
-| --- | --- | --- |
-| Bis Ende November | Hardwareprototyp fertigstellen | Noch festzulegen |
-| Bis Ende November | Softwartests abschließen | 20 h |
-| Bis Ende November | Sample Recherche | Noch festzulegen |
+Meilenstein und finale Abgabe ist **Mitte Januar**.
+Die geschätzten Arbeitszeiten der Arbeitspakete summieren sich auf über **500 h**.
 
-| Zuletzt | Feinabstimmung | 20 h |
+| Zeitraum | Arbeitspaket / Inhalt | Arbeitszeit |
+| --- | --- | --- |
+| **Oktober** | **[AP1]** Hardware-Layout, Komponenten-Beschaffung, ESP32/IMU-Firmware & OSC-Tests | h |
+| **November (H1)** | **[AP2]** Max 9 Standalone-Architektur, JS-Trägheitsrechnung & Koordinaten-Interpolation | h |
+| **November (H2)** | **[AP2]** Mathe-Modelle verfeinern; **[AP3]** SPAT5 HOA-Decoder-Integration & OSC-Routing | h |
+| **Dezember (H1)** | **[AP3]** Dante-Routing; **[AP4]** Sounddesign (CMB-Synthese, Black Hole Sound-Palette) | h |
+| **Dezember (H2)** | **[AP4]** Partikel-Polarisation; **[AP5]** Erste Einmessungen im 3D-Audio-Labor | h |
+| **Januar (bis Mitte)** | **[AP5]** Feinschliff im Raum, Usability-Testing; **[AP6]** Finales Handbuch & Standalone-Export | h |
+| **Gesamt** | | **** |
+
+---
 
 ## Ressourcenplanung
 
-### Materialien
+### Materialien & Software-Lizenzen
 
 | Benötigte Ressourcen | Begründung | Kosten |
 | --- | --- | --- |
-| Seeed Studio XIAO ESP32C6 | Controllerbau | ca. 20 € |
-| Adafruit 9-DOF Orientation IMU Fusion Breakout, BNO085 | Controllerbau | ca. 40 € |
-| ELEGOO Matte PLA Filament 1.75mm Schiefergrau | Controllerbau | ca. 20 € |
-| LiPo-Akku 3,7 V, 1200 mAh | Controllerbau | ca. 15 € |
-| MAX9 | Softwarebackend | 199 € |
-| Gesamt | | ca. 294 € |
+| Seeed Studio XIAO ESP32-C6 | Controllerboard (Wi-Fi 6, BLE 5.3) | 18,44 € |
+| Adafruit 9-DOF IMU Fusion Breakout (BNO085) | Orientierungssensorik (Quaternions, Gyro) | 38,40 € |
+| LiPo-Akku 3,7 V, 1200 mAh | Stromversorgung des Hand-Controllers | 14,11 € |
+| ELEGOO Matte PLA Filament (Schiefergrau, 1kg) | 3D-Druck des Sputnik/Vanguard-Gehäuses | 19,15 € |
+| Audinate Dante Virtual Soundcard | Multi-Channel Audio-Routing auf Betriebssystem-Ebene | 50,00 € |
+| Cycling '74 Max 9 Lizenz | Entwicklungs- und Standalone-Export-Plattform | 199,00 € |
+| **Gesamtsumme** | | **339,10 €** |
 
 ### Räume
 
 | Raum | Zweck | Verfügbarkeit |
 | --- | --- | --- |
-| 3D-Audio-Labor | 3D-Audio-Experimente | nach Vereinbarung |
-| Makerlab | Lötarbeiten, 3D-Druck | jederzeit |
+| 3D-Audio-Labor (USTP) | Einmessen des HOA-Setups, Spatial Audio Testing (7.1.4 Array) | Nach Vereinbarung |
+| Makerlab / Werkstatt | Lötarbeiten, 3D-Druck, Montage des Controllers | Jederzeit |
 
 ### Literatur und Recherche
 
 | Quelle | Thema | Verfügbarkeit |
 | --- | --- | --- |
-| Besuch im technischen Museum Wien | Wissenschaftliche Grundlagen | Nach Vereinbarung |
+| Brian Clegg: *Gravitational Waves* | Wissenschaftliche Grundlagen der Raumzeit-Wellen | Fachliteratur / Privat |
+| Misner, Thorne, Wheeler: *Gravitation* | das Standardwerk für die Grundlagen der Gravitation und Raumzeit-Wellen. | Fachliteratur / Privat |
+| Project Vanguard & Sputnik Dokumentation | Historische Design- und Konstruktionsreferenzen | Archivmaterial |
+| IRCAM SPAT5 Dokumentation | Higher Order Ambisonics & Perceptual Spatialization | Online / Open Source |
+| Besuch Technisches Museum Wien | Interaktive Exponat-Gestaltung & Vermittlungskonzepte | Vor Ort |
 
-## Konzept
+---
 
 ## Chancen und Risiken
 
-## erwarteter Kompetenzgewinn
+- **Chance (Hohe Portabilität):** Durch die reine Max 9 Standalone-Architektur und Dante-Unterstützung kann das System ohne Software-Lizenzen an Museen und Universitäten weitergegeben werden.
+- **Risiko (Latency & Wi-Fi-Dropouts):** Latenzen bei der OSC-Übertragung könnten das Gefühl der direkten Kontrolle beeinträchtigen. *Mitigation:* Verwendung des XIAO ESP32-C6 mit Wi-Fi 6 / 5 GHz sowie lokale Interpolationsfilter in JavaScript **[AP1/AP2]**.
+- **Risiko (Psychoakustische Unschärfe):** Unnatürliche Lautsprechersprünge im Raum bei Orbits. *Mitigation:* Nutzung von Higher Order Ambisonics (HOA) über SPAT5 anstelle von vereinfachtem Lautsprecher-Panning **[AP3]**.
+
+---
+
+## Erwarteter Kompetenzgewinn
+
+- **Advanced Spatial Audio:** Vertieftes Verständnis von Higher Order Ambisonics (HOA), Perceptual Panning und IRCAM SPAT5.
+- **Embedded Engineering:** Entwurf kabelloser Sensorik (ESP32-C6, BNO085 IMU, OSC-Protokoll, Akku-Ladeschaltungen).
+- **DSP & Software Engineering:** Entwurf kompilierbarer Standalone-Audio-Software in Max 9 unter Einsatz von JavaScript für physikalische Simulationen.
+- **Wissenschaftsvermittlung:** Translation komplexer astrophysikalischer Phänomene in haptisch-akustische Exponate.
+
+---
 
 ## Software
 
+- **Max 9 (Cycling '74):** Hauptplattform für Logik, Synthese, UI und Standalone-Export **[AP2]**.
+- **IRCAM SPAT5:** Paket für spatiales Panning, HOA-Decoding und Raumakustik-Simulation **[AP3]**.
+- **Audinate Dante Virtual Soundcard (DVS):** Treiber zur verlustfreien Ansteuerung von 16+ Audio-Kanälen über Netzwerk **[AP3]**.
+- **Arduino IDE / VS Code (PlatformIO):** C++ Entwicklung für den ESP32-C6 Controller **[AP1]**.
+
+---
+
 ## Hardware
+
+- **Sputnik-Gyro-Controller:** Eigenbau-Exponat mit ESP32-C6, BNO085 9-DOF IMU, 1200 mAh LiPo-Akku und USB-C Ladeport **[AP1]**.
+- **MacBook Pro M2 Max:** Host-Rechner für die Ausführung des Max 9 Standalone-Patches.
+- **Audio-Hardware:** Dante-fähiges Audio-Interface / Digitalmischpult und 7.1.4 Lautsprecher-Array im 3D-Audio-Labor **[AP3/AP5]**.
+
+---
+
+## Werbung
+
+![Poster](images/poster.png)
