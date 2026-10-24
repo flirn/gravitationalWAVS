@@ -4,7 +4,7 @@
 
 ## TLDR
 
-**gravitationalWAVS** ist eine interaktive 3D-Audio-Installation zur psychoakustischen Vermittlung von Gravitationswellen und Raumzeit-Dehnungen in Museums- und Wissenschaftskontexten. Über einen kabellosen, sputnik-inspirierten Haptik-Controller (ESP32/IMU via OSC) steuern Rezipient\*innen die Orbits zweier gekoppelter Schwarzer Löcher in einem 3D-Klangfeld. Das System wird vollständig als autarke Standalone-Applikation in Max 9 mit IRCAM SPAT5 (Higher Order Ambisonics) umgesetzt, wobei mathematische Trägheitsfilter (Inertia) eine spürbare Illusion von physischer Masse im Raum erzeugen.
+**gravitationalWAVS** ist eine interaktive 3D-Audio-Installation zur psychoakustischen Vermittlung von Gravitationswellen und Raumzeit-Dehnungen in Museums- und Wissenschaftskontexten. Über einen kabellosen, sputnik-inspirierten Haptik-Controller (ESP32/IMU via OSC) steuern Rezipient*innen die Orbits zweier gekoppelter Schwarzer Löcher in einem 3D-Klangfeld. Das System wird vollständig als autarke Standalone-Applikation in Max 9 mit IRCAM SPAT5 (Higher Order Ambisonics) umgesetzt, wobei mathematische Trägheitsfilter (Inertia) eine spürbare Illusion von physischer Masse im Raum erzeugen.
 
 ## Inhaltsverzeichnis
 
@@ -37,7 +37,7 @@ Das Ziel des Projekts **GRAVITATIONAL WAVs** ist es, ein fundamentales Phänomen
 
 In der Installation wird dieses Prinzip in ein dreidimensionales Klangfeld übersetzt:
 
-1. **Cosmic Microwave Background (CMB):** Ein fundamentales, waberndes Hintergrundrauschen repräsentiert die kosmische Mikrowellen-Hintergrundstrahlung. [Audiobeispiel online](https://www.youtube.com/watch?v=gJJmFnMea1Q)
+1/ **Cosmic Microwave Background (CMB):** Ein fundamentales, waberndes Hintergrundrauschen repräsentiert die kosmische Mikrowellen-Hintergrundstrahlung. [Audiobeispiel online](https://www.youtube.com/watch?v=gJJmFnMea1Q)
 
 <figure>
   <img src="images/Planck_CMB_orig.jpg" alt="Kosmische Mikrowellen-Hintergrundstrahlung bildlich dargestellt" />
@@ -45,18 +45,18 @@ In der Installation wird dieses Prinzip in ein dreidimensionales Klangfeld über
   <figcaption"><i>Kosmische Mikrowellen-Hintergrundstrahlung</i></figcaption>
 </figure>
 
-2. **Binary Black Hole System:** Zwei gekoppelte Soundobjekte simulieren zwei einander umkreisende Schwarze Löcher.
+2/ **Binary Black Hole System:** Zwei gekoppelte Soundobjekte simulieren zwei einander umkreisende Schwarze Löcher.
 
-3. **Testpartikel-Ring:** Ein virtueller Ring aus Soundquellen macht die Polarisation ($h_+$ und $h_\times$) der Raumzeit-Dehnung auditiv erfahrbar.
+3/ **Testpartikel-Ring:** Ein virtueller Ring aus Soundquellen macht die Polarisation ($h_+$ und $h_\times$) der Raumzeit-Dehnung auditiv erfahrbar.
 
 <figure>
   <img src="images/GravitationalWave_CrossPolarization.gif" />
   <br>
-  <figcaption"><i>Der Effekt von kreuzpolarisierten Gravitationswellen auf einen Partikelring.</i></figcaption>
+  <figcaption">*Der Effekt von kreuzpolarisierten Gravitationswellen auf einen Partikelring.*</figcaption>
 </figure>
 <br>
 
-4. **Interaktiver Controller & Trägheits-Engine:** Über ein physisches Objekt mit Gyroskop greifen die Zuhörer direkt in das System ein. Über mathematische Trägheitsfilter (Inertia) besitzen die Schwarzen Löcher eine spürbare Masse: Bei einer plötzlichen Richtungsänderung fliegt das System organisch weiter und dreht zeitverzögert ab. Es entsteht eine haptische Illusion von Masse im Raum.
+4/ **Interaktiver Controller & Trägheits-Engine:** Über ein physisches Objekt mit Gyroskop greifen die Zuhörer direkt in das System ein. Über mathematische Trägheitsfilter (Inertia) besitzen die Schwarzen Löcher eine spürbare Masse: Bei einer plötzlichen Richtungsänderung fliegt das System organisch weiter und dreht zeitverzögert ab. Es entsteht eine haptische Illusion von Masse im Raum.
 
 ---
 
@@ -74,42 +74,45 @@ Auf Basis dieser Expertenratschläge wurde die Minimal-Fallback-Lösung (Ableton
 
 ---
 
-# Arbeitspakete & Zeitplanung
-
----
-
 ## Arbeitspakete
 
 Das Projekt gliedert sich in folgende agile Arbeitspakete (AP), die weitgehend iterativ und nebenläufig entwickelt werden:
 
 ### AP0: Konzeption, Recherche & Projektdefinition
+
 - Anforderungsanalyse, Systemarchitektur-Entwurf und Festlegung der Schnittstellen.
 - Recherche zu Spatial-Audio-Formaten (HOA), Sensorik (IMU-Fusion) und physikalischen Modellierungsgrundlagen.
 
 ### AP1: Hardware-Prototyping & Sensorik (Embedded & Physical Computing)
+
 - Gehäuseentwicklung im Sputnik/Vanguard-Look (CAD, 3D-Druck mit PLA).
 - Schaltungsentwurf, LiPo-Lademanagement & Löt-Assembly (Seeed Studio XIAO ESP32-C6 + Adafruit BNO085 IMU).
 - Firmware-Entwicklung (C++/Arduino): Sensor-Fusion, Kalibrierung & Low-Latency OSC-Streaming via Wi-Fi.
 
 ### AP2: Max 9 Systemarchitektur & Mathematik (Inertia Engine)
+
 - Aufbau des Max 9 Standalone-Frameworks & OSC-Parsing.
 - **Inertia-Engine in JavaScript:** Programmierung der mathematischen Trägheitsberechnung, Beschleunigung, Impulserhaltung und gekoppelter Kepler-Bahnen.
 - Entwurf der interaktiven Benutzeroberfläche (UI) für Monitoring, Kalibrierung und Perspektivsteuerung.
 
 ### AP3: Spatial Audio & IRCAM SPAT5 Integration (Higher Order Ambisonics)
+
 - Einbindung und Konfiguration von IRCAM SPAT5 für Higher Order Ambisonics (HOA).
 - Implementierung der räumlichen Trajektorien, Distanz-Attenuations-Filter und Hall-Dämpfungen.
 - Audio-Routing via Dante Virtual Soundcard zur flexiblen Ansteuerung von Mehrkanalsystemen (z. B. 7.1.4 Studio-Array).
 
 ### AP4: Sounddesign & Synthese
+
 - Klangsynthese in Max (FM-, Granular- und Rauschsynthese für CMB, Schwarze Löcher und Partikelring).
 - Erstellung psychoakustischer Modulations-Patterns gekoppelt an die physikalischen Raumzeit-Parameter.
 
 ### AP5: Integration, Labor-Einmessen & Usability-Testing
+
 - Testläufe und akustisches Einmessen im 3D-Audio-Labor der Fachhochschule.
 - Haptik- und Usability-Tests mit Testpersonen zur Verifikation der kontinuierlichen Raumtrajektorien und Trägheitsillusion.
 
 ### AP6: Dokumentation, Open-Source-Release & Exponat-Aufbereitung
+
 - Erstellung des Projekthandbuchs, technische Dokumentation für den Open-Source-Release.
 - Vorbereitung auf die Projektschau/Vernissage und wissenschaftliche Weiterverwendung.
 
@@ -239,4 +242,4 @@ gantt
 
 ## Werbung
 
-![Poster](images/poster.png)
+![Poster](images/poster.png){: style="width:50%"}
