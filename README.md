@@ -54,6 +54,7 @@ In der Installation wird dieses Prinzip in ein dreidimensionales Klangfeld über
   <br>
   <figcaption"><i>Der Effekt von kreuzpolarisierten Gravitationswellen auf einen Partikelring.</i></figcaption>
 </figure>
+<br>
 
 4. **Interaktiver Controller & Trägheits-Engine:** Über ein physisches Objekt mit Gyroskop greifen die Zuhörer direkt in das System ein. Über mathematische Trägheitsfilter (Inertia) besitzen die Schwarzen Löcher eine spürbare Masse: Bei einer plötzlichen Richtungsänderung fliegt das System organisch weiter und dreht zeitverzögert ab. Es entsteht eine haptische Illusion von Masse im Raum.
 
@@ -75,21 +76,21 @@ Auf Basis dieser Expertenratschläge wurde die Minimal-Fallback-Lösung (Ableton
 
 ## Arbeitspakete
 
-Das Projekt umfasst ein Gesamtvolumen von über **500 Arbeitsstunden** bis Mitte Januar und gliedert sich in folgende Hauptarbeitspakete (AP):
+Das Projekt gliedert sich in folgende agile Hauptarbeitspakete (AP), die weitgehend iterativ und nebenläufig entwickelt werden:
 
-### AP1: Hardware-Prototyping & Sensorik
+### AP1: Hardware-Prototyping & Sensorik (Embedded & Physical Computing)
 
-- Gehäuseentwicklung im Sputnik/Vanguard/Webb-Teleskop-Look (CAD, 3D-Druck mit PLA).
+- Gehäuseentwicklung im Sputnik/Vanguard-Look (CAD, 3D-Druck mit PLA).
 - Schaltungsentwurf, LiPo-Lademanagement & Löt-Assembly (Seeed Studio XIAO ESP32-C6 + Adafruit BNO085 IMU).
 - Firmware-Entwicklung (C++/Arduino): Sensor-Fusion, Kalibrierung & Low-Latency OSC-Streaming via Wi-Fi.
 
-### AP2: Max 9 Systemarchitektur & Mathematik
+### AP2: Max 9 Systemarchitektur & Mathematik (Inertia Engine)
 
 - Aufbau des Max 9 Standalone-Frameworks & OSC-Parsing.
 - **Inertia-Engine in JavaScript:** Programmierung der mathematischen Trägheitsberechnung, Beschleunigung, Impulserhaltung und gekoppelter Kepler-Bahnen.
 - Entwurf der interaktiven Benutzeroberfläche (UI) für Monitoring, Kalibrierung und Perspektivsteuerung.
 
-### AP3: Spatial Audio & IRCAM SPAT5 Integration
+### AP3: Spatial Audio & IRCAM SPAT5 Integration (Higher Order Ambisonics)
 
 - Einbindung und Konfiguration von IRCAM SPAT5 für Higher Order Ambisonics (HOA).
 - Implementierung der räumlichen Trajektorien, Distanz-Attenuations-Filter und Hall-Dämpfungen.
@@ -100,32 +101,57 @@ Das Projekt umfasst ein Gesamtvolumen von über **500 Arbeitsstunden** bis Mitte
 - Klangsynthese in Max (FM-, Granular- und Rauschsynthese für CMB, Schwarze Löcher und Partikelring).
 - Erstellung psychoakustischer Modulations-Patterns gekoppelt an die physikalischen Raumzeit-Parameter.
 
-### AP5: Tests, Einmessen & Feinschliff
+### AP5: Integration, Labor-Einmessen & Usability-Testing
 
-- Testläufe im 3D-Audio-Labor der Fachhochschule, Einmessen der Speaker-Decodes.
-- Haptik- und Usability-Tests mit Ausstellungsbesuchern/Testpersonen zur Verifikation der kontinuierlichen Raumtrajektorien.
+- Testläufe und akustisches Einmessen im 3D-Audio-Labor der Fachhochschule.
+- Haptik- und Usability-Tests mit Testpersonen zur Verifikation der kontinuierlichen Raumtrajektorien und Trägheitsillusion.
 
-### AP6: Dokumentation, Paper & Exponat-Aufbereitung
+### AP6: Dokumentation, Open-Source-Release & Exponat-Aufbereitung
 
-- Erstellung des Projekthandbuchs, technische Dokumentation für Open-Source-Release.
-- Vorbereitung auf die Projektschau/Vernissage und wissenschaftliche Weiterverwendung (Promotion).
+- Erstellung des Projekthandbuchs, technische Dokumentation für den Open-Source-Release.
+- Vorbereitung auf die Projektschau/Vernissage und wissenschaftliche Weiterverwendung.
 
 ---
 
 ## Zeitplanung
 
-Meilenstein und finale Abgabe ist **Mitte Januar**.
-Die geschätzten Arbeitszeiten der Arbeitspakete summieren sich auf über **500 h**.
+Die Entwicklung folgt einem agilen Sprint-Modell mit parallelen Entwicklungssträngen, aufgeteilt in Kalenderwochen (KW 40 bis KW 03).
 
-| Zeitraum | Arbeitspaket / Inhalt | Arbeitszeit |
-| --- | --- | --- |
-| **Oktober** | **[AP1]** Hardware-Layout, Komponenten-Beschaffung, ESP32/IMU-Firmware & OSC-Tests | h |
-| **November (H1)** | **[AP2]** Max 9 Standalone-Architektur, JS-Trägheitsrechnung & Koordinaten-Interpolation | h |
-| **November (H2)** | **[AP2]** Mathe-Modelle verfeinern; **[AP3]** SPAT5 HOA-Decoder-Integration & OSC-Routing | h |
-| **Dezember (H1)** | **[AP3]** Dante-Routing; **[AP4]** Sounddesign (CMB-Synthese, Black Hole Sound-Palette) | h |
-| **Dezember (H2)** | **[AP4]** Partikel-Polarisation; **[AP5]** Erste Einmessungen im 3D-Audio-Labor | h |
-| **Januar (bis Mitte)** | **[AP5]** Feinschliff im Raum, Usability-Testing; **[AP6]** Finales Handbuch & Standalone-Export | h |
-| **Gesamt** | | **** |
+### Sprints & Workload-Matrix
+
+| Zeitspanne | Phase / Fokus | Parallele Haupt-Aktivitäten | Workload |
+| :--- | :--- | :--- | :--- |
+| **KW 40 – 44** | **Sprint 1: Core Systems & Firmware** | • **AP1:** Hardware-Layout, Gehäuse-3D-Druck & ESP32-Firmware<br>• **AP2:** Max 9 Framework, OSC-Parsing & JS-Kepler-Prototyp | 120 h |
+| **KW 45 – 47** | **Sprint 2: Physics & Spatial Core** | • **AP2:** Mathe-Verfeinerung (Inertia Engine) & UI-Design<br>• **AP3:** SPAT5-HOA-Decoder & Trajektorien-Mapping | 100 h |
+| **KW 48 – 50** | **Sprint 3: Audio Synthesis & Routing** | • **AP3:** Dante DVS Multi-Channel Setup<br>• **AP4:** DSP-Synthese (CMB-Rauschen & Black-Hole-Palette) | 100 h |
+| **KW 51 – 52** | **Sprint 4: Integration & Lab Testing** | • **AP4:** Partikel-Polarisation & Parameter-Kopplung<br>• **AP5:** Erste Einmessungen & Haptik-Fieldtests im 3D-Audio-Labor | 90 h |
+| **KW 01 – 03** | **Sprint 5: Polishing & Deployment** | • **AP5:** Raumakustischer Feinschliff & Usability-Evaluation<br>• **AP6:** Standalone-Export, Projekthandbuch & Open-Source-Prep | 110 h |
+| **Gesamt** | **Projektdauer: KW 40 – KW 03** | **Iterative Entwicklung über alle Arbeitspakete (AP1–AP6)** | **520 h** |
+
+---
+
+### Agiles Gantt-Diagramm (Mermaid.js)
+
+```mermaid
+gantt
+    dateFormat  YYYY-MM-DD
+    title Agile Entwicklung & Parallele Arbeitspakete (KW 40 - KW 03)
+
+    section Sprints
+    Sprint 1 (Core & Firmware)      :s1, 2025-10-13, 2025-11-02
+    Sprint 2 (Physics & Spatial)    :s2, 2025-11-03, 2025-11-23
+    Sprint 3 (Synthesis & Routing)  :s3, 2025-11-24, 2025-12-14
+    Sprint 4 (Integration & Lab)    :s4, 2025-12-15, 2025-12-28
+    Sprint 5 (Polishing & Release)  :s5, 2025-12-29, 2026-01-18
+
+    section Arbeitspakete
+    AP1: Hardware & Firmware        :active, ap1, 2025-10-01, 2025-11-02
+    AP2: Max 9 & JS-Inertia         :active, ap2, 2025-10-13, 2025-11-23
+    AP3: Spatial Audio / SPAT5      :ap3, 2025-11-03, 2025-12-14
+    AP4: Sounddesign & Synthese     :ap4, 2025-11-24, 2025-12-28
+    AP5: Lab-Tests & Polishing      :ap5, 2025-12-15, 2026-01-18
+    AP6: Doku & Deployment          :ap6, 2026-01-01, 2026-01-18
+```
 
 ---
 
