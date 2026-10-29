@@ -76,7 +76,7 @@ Auf Basis dieser Expertenratschläge wurde die Minimal-Fallback-Lösung (Ableton
 
 ## Arbeitspakete
 
-Das Projekt gliedert sich in folgende agile Arbeitspakete (AP), die weitgehend iterativ und nebenläufig entwickelt werden:
+Das Projekt gliedert sich in folgende Arbeitspakete (AP), die weitgehend iterativ und nebenläufig entwickelt werden:
 
 ### AP0: Konzeption, Recherche & Projektdefinition
 
@@ -113,8 +113,8 @@ Das Projekt gliedert sich in folgende agile Arbeitspakete (AP), die weitgehend i
 
 ### AP6: Dokumentation, Open-Source-Release & Exponat-Aufbereitung
 
-- Erstellung des Projekthandbuchs, technische Dokumentation für den Open-Source-Release.
-- Vorbereitung auf die Projektschau/Vernissage und wissenschaftliche Weiterverwendung.
+- Erstellung des Projekthandbuchs, technische Dokumentation.
+- Vorbereitung auf die Projektschau/Vernissage und wissenschaftliche und museale Weiterverwendung.
 
 ---
 
@@ -124,13 +124,13 @@ Das Projekt gliedert sich in folgende agile Arbeitspakete (AP), die weitgehend i
 
 | Phase / Fokus | Parallele Haupt-Aktivitäten | Workload |
 | :--- | :--- | :--- |
-| **Vorarbeitung & Konzeption** | • **AP0:** Systemarchitektur, Hardware-Recherche & Anforderungsanalyse | 40 h |
-| **Sprint 1: Core Systems & Firmware** | • **AP1:** Hardware-Layout, Gehäuse-3D-Druck & ESP32-Firmware<br>• **AP2:** Max 9 Framework, OSC-Parsing & JS-Kepler-Prototyp | 120 h |
-| **Sprint 2: Physics & Spatial Core** | • **AP2:** Mathe-Verfeinerung (Inertia Engine) & UI-Design<br>• **AP3:** SPAT5-HOA-Decoder & Trajektorien-Mapping | 100 h |
-| **Sprint 3: Audio Synthesis & Routing** | • **AP3:** Dante DVS Multi-Channel Setup<br>• **AP4:** DSP-Synthese (CMB-Rauschen & Black-Hole-Palette) | 100 h |
-| **Sprint 4: Integration & Lab Testing** | • **AP4:** Partikel-Polarisation & Parameter-Kopplung<br>• **AP5:** Erste Einmessungen & Haptik-Fieldtests im 3D-Audio-Labor | 90 h |
-| **Sprint 5: Polishing & Deployment** | • **AP5:** Raumakustischer Feinschliff & Usability-Evaluation<br>• **AP6:** Standalone-Export, Projekthandbuch & Open-Source-Prep | 110 h |
-| **Gesamt** | **Iterative Entwicklung über alle Arbeitspakete (AP0–AP6)** | **560 h** |
+| **Vorarbeitung & Konzeption** |  **AP0:** Systemarchitektur, Hardware-Recherche & Anforderungsanalyse | 40 h |
+| **Sprint 1: Core Systems & Firmware** | • **AP1:** Hardware-Layout, Gehäuse-3D-Druck & ESP32-Firmware<br> **AP2:** Max 9 Framework, OSC-Parsing & JS-Kepler-Prototyp | 120 h |
+| **Sprint 2: Physics & Spatial Core** |  **AP2:** Mathe-Verfeinerung (Inertia Engine) & UI-Design<br>• **AP3:** SPAT5-HOA-Decoder & Trajektorien-Mapping | 80 h |
+| **Sprint 3: Audio Synthesis & Routing** |  **AP3:** Dante DVS Multi-Channel Setup<br>• **AP4:** DSP-Synthese (CMB-Rauschen & Black-Hole-Palette) | 100 h |
+| **Sprint 4: Integration & Lab Testing** |  **AP4:** Partikel-Polarisation & Parameter-Kopplung<br>• **AP5:** Erste Einmessungen & Haptik-Fieldtests im 3D-Audio-Labor | 90 h |
+| **Sprint 5: Polishing & Deployment** |  **AP5:** Raumakustischer Feinschliff & Usability-Evaluation<br> **AP6:** Standalone-Export, Projekthandbuch & Open-Source-Prep | 110 h |
+| **Gesamt** | **Iterative Entwicklung über alle Arbeitspakete (AP0–AP6)** | **540 h** |
 
 ---
 
@@ -150,20 +150,23 @@ gantt
     axisFormat KW %V
 
     section Vorbereitung & Sprint 0
-    AP0 - Konzeption & Recherche     :2026-09-28, 2026-10-25
-    Sprint 0 - Review (Konzeption)   :crit, 2026-10-19, 2026-10-25
+    AP0 - Konzeption & Recherche     :2026-09-19, 2026-10-25
+    AP0 - Recherche (Live-Systeme besuchen)   :2026-11-11, 2026-11-25
+    Sprint 0 - Konzeption & Pitch   :crit, 2026-09-28, 2026-10-03
+    Sprint 0 - Projekthandbuch   :crit, 2026-10-19, 2026-10-30
 
     section Sprint 1 & 2 (Hardware & Core)
-    AP1 - Hardware & Firmware        :active, 2026-10-26, 2026-11-29
-    Sprint 1 - Review (Core & FW)    :crit, 2026-11-16, 2026-11-22
-    AP2 - Max 9 & JS-Inertia         :active, 2026-11-09, 2026-12-20
+    AP1 - Hardware & Firmware        :active, 2026-10-20, 2026-11-29
+    Sprint 1 - Review (Core & FW)    :crit, 2026-11-22, 2026-11-29
+    AP2 - Max 9 & JS-Inertia         :active, 2026-10-28, 2026-12-20
     Sprint 2 - Review (Physics)      :crit, 2026-12-07, 2026-12-13
 
     section Sprint 3 & 4 (Audio & Lab)
-    AP3 - Spatial Audio / SPAT5      :2026-11-30, 2027-01-03
-    AP4 - Sounddesign & Synthese     :2026-12-21, 2027-01-10
+    AP3 - Spatial Audio / SPAT5      :2026-11-25, 2027-01-03
+    AP4 - Sounddesign & Synthese     :2026-11-25, 2027-01-03
     Sprint 3 - Review (Synthesis)    :crit, 2026-12-28, 2027-01-03
-    AP5 - Lab-Tests & Polishing      :2027-01-04, 2027-01-19
+    AP5 - Lab-Tests & Polishing      :2026-12-13, 2027-01-10
+    Sprint 4 - First Lab Test     :crit, 2026-12-14, 2026-12-18
     Sprint 4 - Review (Lab Test)     :crit, 2027-01-04, 2027-01-10
 
     section Sprint 5 (Release)
@@ -203,6 +206,7 @@ gantt
 | Project Vanguard & Sputnik Dokumentation | Historische Design- und Konstruktionsreferenzen | Archivmaterial |
 | IRCAM SPAT5 Dokumentation | Higher Order Ambisonics & Perceptual Spatialization | Online / Open Source |
 | Besuch Technisches Museum Wien | Interaktive Exponat-Gestaltung & Vermittlungskonzepte | Vor Ort |
+| Besuch Live-Systeme (Weltraum System Ars Electronica Zentrum Linz) | Analyse von räumlicher Akustik und Live-Setups | Vor Ort |
 
 ---
 
@@ -218,7 +222,7 @@ gantt
 
 - **Advanced Spatial Audio:** Vertieftes Verständnis von Higher Order Ambisonics (HOA), Perceptual Panning und IRCAM SPAT5.
 - **Embedded Engineering:** Entwurf kabelloser Sensorik (ESP32-C6, BNO085 IMU, OSC-Protokoll, Akku-Ladeschaltungen).
-- **DSP & Software Engineering:** Entwurf kompilierbarer Standalone-Audio-Software in Max 9 unter Einsatz von JavaScript für physikalische Simulationen.
+- **DSP & Software Engineering:** Entwurf kompilierbarer Standalone-Audio-Software in Max 9 unter Einsatz von JavaScript für physikalische Simulationen. Max 9 Standalone-Export und Integration in räumliche Audio-Setups. Sample-basierte Synthese und Echtzeit-Processing.
 - **Wissenschaftsvermittlung:** Translation komplexer astrophysikalischer Phänomene in haptisch-akustische Exponate.
 
 ---
@@ -236,7 +240,7 @@ gantt
 
 - **Sputnik-Gyro-Controller:** Eigenbau-Exponat mit ESP32-C6, BNO085 9-DOF IMU, 1200 mAh LiPo-Akku und USB-C Ladeport **[AP1]**.
 - **MacBook Pro M2 Max:** Host-Rechner für die Ausführung des Max 9 Standalone-Patches.
-- **Audio-Hardware:** Dante-fähiges Audio-Interface / Digitalmischpult und 7.1.4 Lautsprecher-Array im 3D-Audio-Labor **[AP3/AP5]**.
+- **Audio-Hardware:** Dante-fähiges Audio-Interface / Digitalmischpult und 7.1.4 Lautsprecher-Array im 3D-Audio-Labor und binauralem Setup für Projektvernissage **[AP3/AP5]**.
 
 ---
 
