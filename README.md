@@ -125,12 +125,12 @@ Das Projekt gliedert sich in folgende Arbeitspakete (AP), die weitgehend iterati
 | Phase / Fokus | Parallele Haupt-Aktivitäten | Workload |
 | :--- | :--- | :--- |
 | **Vorarbeitung & Konzeption** |  **AP0:** Systemarchitektur, Hardware-Recherche & Anforderungsanalyse | 40 h |
-| **Sprint 1: Core Systems & Firmware** | • **AP1:** Hardware-Layout, Gehäuse-3D-Druck & ESP32-Firmware<br> **AP2:** Max 9 Framework, OSC-Parsing & JS-Kepler-Prototyp | 120 h |
-| **Sprint 2: Physics & Spatial Core** |  **AP2:** Mathe-Verfeinerung (Inertia Engine) & UI-Design<br>• **AP3:** SPAT5-HOA-Decoder & Trajektorien-Mapping | 80 h |
-| **Sprint 3: Audio Synthesis & Routing** |  **AP3:** Dante DVS Multi-Channel Setup<br>• **AP4:** DSP-Synthese (CMB-Rauschen & Black-Hole-Palette) | 100 h |
-| **Sprint 4: Integration & Lab Testing** |  **AP4:** Partikel-Polarisation & Parameter-Kopplung<br>• **AP5:** Erste Einmessungen & Haptik-Fieldtests im 3D-Audio-Labor | 90 h |
-| **Sprint 5: Polishing & Deployment** |  **AP5:** Raumakustischer Feinschliff & Usability-Evaluation<br> **AP6:** Standalone-Export, Projekthandbuch & Open-Source-Prep | 110 h |
-| **Gesamt** | **Iterative Entwicklung über alle Arbeitspakete (AP0–AP6)** | **540 h** |
+| **Sprint 1: Core Systems & Firmware** | • **AP1:** Hardware-Layout, Gehäuse-3D-Druck & ESP32-Firmware<br> **AP2:** Max 9 Framework, OSC-Parsing & JS-Kepler-Prototyp | 72 h |
+| **Sprint 2: Physics & Spatial Core** |  **AP2:** Mathe-Verfeinerung (Inertia Engine) & UI-Design<br>• **AP3:** SPAT5-HOA-Decoder & Trajektorien-Mapping | 48 h |
+| **Sprint 3: Audio Synthesis & Routing** |  **AP3:** Dante DVS Multi-Channel Setup<br>• **AP4:** DSP-Synthese (CMB-Rauschen & Black-Hole-Palette) | 48 h |
+| **Sprint 4: Integration & Lab Testing** |  **AP4:** Partikel-Polarisation & Parameter-Kopplung<br>• **AP5:** Erste Einmessungen & Haptik-Fieldtests im 3D-Audio-Labor | 24 h |
+| **Sprint 5: Polishing & Deployment** |  **AP5:** Raumakustischer Feinschliff & Usability-Evaluation<br> **AP6:** Standalone-Export, Projekthandbuch & Open-Source-Prep | 48 h |
+| **Gesamt** | **Iterative Entwicklung über alle Arbeitspakete (AP0–AP6)** | **240 h** |
 
 ---
 
