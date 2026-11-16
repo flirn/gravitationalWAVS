@@ -4,7 +4,7 @@
 
 ## TLDR
 
-**gravitationalWAVS** ist eine interaktive 3D-Audio-Installation zur psychoakustischen Vermittlung von Gravitationswellen und Raumzeit-Dehnungen in Museums- und Wissenschaftskontexten. Über einen kabellosen, sputnik-inspirierten Haptik-Controller (ESP32/IMU via OSC) steuern Rezipient*innen die Orbits zweier gekoppelter Schwarzer Löcher in einem 3D-Klangfeld. Das System wird vollständig als autarke Standalone-Applikation in Max 9 mit IRCAM SPAT5 (Higher Order Ambisonics) umgesetzt, wobei mathematische Trägheitsfilter (Inertia) eine spürbare Illusion von physischer Masse im Raum erzeugen.
+**gravitationalWAVS** ist eine interaktive 3D-Audio-Installation zur psychoakustischen und dokumentarischen Vermittlung von Gravitationswellen in Museums- und Wissenschaftskontexten. Über einen kabellosen, sputnik-inspirierten Haptik-Controller (ESP32/IMU via OSC) steuern Rezipient*innen die Orbits zweier gekoppelter Schwarzer Löcher sowie eine Shepard-Ton-Kreiselbewegung in einem 3D-Klangfeld, während historische und erklärende Sprachsamples als räumlich fixierte Ankerpunkte dienen. Das System wird vollständig als autarke Standalone-Applikation in Max 9 mit IRCAM SPAT5 (Higher Order Ambisonics) umgesetzt, wobei mathematische Trägheitsfilter (Inertia) eine spürbare Illusion von physischer Masse im Raum erzeugen.
 
 ## Inhaltsverzeichnis
 
@@ -12,7 +12,7 @@
 - [Konzept](#konzept)
 - [Wissenschaftliche & Technische Beratung](#wissenschaftliche--technische-beratung)
 - [Arbeitspakete](#arbeitspakete)
-- [Zeitplanung](#zeitplanung)
+- [Zeitplanung & Workload](#zeitplanung--workload)
 - [Ressourcenplanung](#ressourcenplanung)
   - [Materialien & Software-Lizenzen](#materialien--software-lizenzen)
   - [Räume](#räume)
@@ -32,31 +32,33 @@ Das Ziel des Projekts **GRAVITATIONAL WAVs** ist es, ein fundamentales Phänomen
 <figure>
   <img src="images/wave.gif" alt="Zweidimensionale Betrachtung von Gravitationswellen, die von zwei einander umkreisenden Neutronensternen ausgesandt werden" />
   <br>
-  <figcaption"><i>Zweidimensionale Betrachtung von Gravitationswellen, die von zwei einander umkreisenden Neutronensternen ausgesandt werden</i></figcaption>
+  <figcaption><i>Zweidimensionale Betrachtung von Gravitationswellen, die von zwei einander umkreisenden Neutronensternen ausgesandt werden</i></figcaption>
 </figure>
 
-In der Installation wird dieses Prinzip in ein dreidimensionales Klangfeld übersetzt:
+In der Installation wird dieses Prinzip in ein dreidimensionales Klangfeld übersetzt, das dokumentarische Erzählung und physikalische Simulation miteinander verbindet:
 
 1. **Cosmic Microwave Background (CMB):** Ein fundamentales, waberndes Hintergrundrauschen repräsentiert die kosmische Mikrowellen-Hintergrundstrahlung. [Audiobeispiel online](https://www.youtube.com/watch?v=gJJmFnMea1Q)
 
 <figure>
   <img src="images/Planck_CMB_orig.jpg" alt="Kosmische Mikrowellen-Hintergrundstrahlung bildlich dargestellt" />
   <br>
-  <figcaption"><i>Kosmische Mikrowellen-Hintergrundstrahlung</i></figcaption>
+  <figcaption><i>Kosmische Mikrowellen-Hintergrundstrahlung</i></figcaption>
 </figure>
 
-2. **Binary Black Hole System:** Zwei gekoppelte Soundobjekte simulieren zwei einander umkreisende Schwarze Löcher.
+2. **Binary Black Hole System & Shepard-Kreiselbewegung:** Zwei gekoppelte Soundobjekte simulieren zwei einander umkreisende Schwarze Löcher. Die kontinuierliche Beschleunigung und Annäherung (Inspiral) wird durch eine psychoakustische Shepard-Ton-Synthese als endlose Kreiselbewegung abgebildet.
 
 3. **Testpartikel-Ring:** Ein virtueller Ring aus Soundquellen macht die Polarisation ($h_+$ und $h_\times$) der Raumzeit-Dehnung auditiv erfahrbar.
 
 <figure>
   <img src="images/GravitationalWave_CrossPolarization.gif" />
   <br>
-  <figcaption">*Der Effekt von kreuzpolarisierten Gravitationswellen auf einen Partikelring.*</figcaption>
+  <figcaption><i>Der Effekt von kreuzpolarisierten Gravitationswellen auf einen Partikelring.</i></figcaption>
 </figure>
 <br>
 
-4. **Interaktiver Controller & Trägheits-Engine:** Über ein physisches Objekt mit Gyroskop greifen die Zuhörer direkt in das System ein. Über mathematische Trägheitsfilter (Inertia) besitzen die Schwarzen Löcher eine spürbare Masse: Bei einer plötzlichen Richtungsänderung fliegt das System organisch weiter und dreht zeitverzögert ab. Es entsteht eine haptische Illusion von Masse im Raum.
+4. **Dokumentarische Ebene & Fixierte Sprach-Anker:** Authentische Sprachsamples (wie LIGO-Entdeckungszitate) und erklärende Erzählstränge vermitteln den wissenschaftlichen Kontext im dokumentarischen Stil. Um die räumliche Orientierung zu wahren, bleiben diese Stimmen an festen Positionen im Raum verankert, während sie durch die bewegten, hardwaregesteuerten Audioeffekte dramaturgisch untermalt werden.
+
+5. **Interaktiver Controller & Trägheits-Engine:** Über ein physisches Objekt mit Gyroskop greifen die Zuhörer direkt in das System ein. Über mathematische Trägheitsfilter (Inertia) besitzen die Schwarzen Löcher eine spürbare Masse: Bei einer plötzlichen Richtungsänderung fliegt das System organisch weiter und dreht zeitverzögert ab. Es entsteht eine haptische Illusion von Masse im Raum.
 
 ---
 
@@ -98,20 +100,27 @@ Das Projekt gliedert sich in folgende Arbeitspakete (AP), die weitgehend iterati
 ### AP3: Spatial Audio & IRCAM SPAT5 Integration (Higher Order Ambisonics)
 
 - Einbindung und Konfiguration von IRCAM SPAT5 für Higher Order Ambisonics (HOA).
-- Implementierung der räumlichen Trajektorien, Distanz-Attenuations-Filter und Hall-Dämpfungen.
+- Implementierung dynamischer Raumtrajektorien (Orbits, Distanz-Attenuations-Filter) im Kontrast zu räumlich fixierten Anker-Positionen für die Sprachebene.
 - Audio-Routing via Dante Virtual Soundcard zur flexiblen Ansteuerung von Mehrkanalsystemen (z. B. 7.1.4 Studio-Array).
 
-### AP4: Sounddesign & Synthese
+### AP4: Dokumentarisches Storytelling & Sprachsamples
 
-- Klangsynthese in Max (FM-, Granular- und Rauschsynthese für CMB, Schwarze Löcher und Partikelring).
+- Recherche, Auswahl und Aufbereitung historischer Original-Zitate (z. B. LIGO-Entdeckung) sowie Erstellung erklärender Erzähltexte.
+- Dramaturgische Strukturierung des dokumentarischen Erzählstrangs und Einbettung in einen Sample-Player innerhalb von Max 9.
+- Spektrale Anpassung und dynamisches Pegel-Management (Sidechain-Ducking), um die Sprachverständlichkeit gegenüber den bewegten Raumzeit-Effekten sicherzustellen.
+
+### AP5: Sounddesign & Synthese
+
+- Klangsynthese in Max (FM-, Granular-, 80s-Synth- und Rauschsynthese für CMB, Schwarze Löcher und Partikelring).
+- Implementierung der **Shepard-Ton-Synthese** zur psychoakustischen Abbildung der endlosen Kreisel- und Annäherungsbewegung (Inspiral).
 - Erstellung psychoakustischer Modulations-Patterns gekoppelt an die physikalischen Raumzeit-Parameter.
 
-### AP5: Integration, Labor-Einmessen & Usability-Testing
+### AP6: Integration, Labor-Einmessen & Usability-Testing
 
 - Testläufe und akustisches Einmessen im 3D-Audio-Labor der Fachhochschule.
-- Haptik- und Usability-Tests mit Testpersonen zur Verifikation der kontinuierlichen Raumtrajektorien und Trägheitsillusion.
+- Haptik- und Usability-Tests mit Testpersonen zur Verifikation der kontinuierlichen Raumtrajektorien, Trägheitsillusion und Sprachverständlichkeit.
 
-### AP6: Dokumentation, Open-Source-Release & Exponat-Aufbereitung
+### AP7: Dokumentation, Open-Source-Release & Exponat-Aufbereitung
 
 - Erstellung des Projekthandbuchs, technische Dokumentation.
 - Vorbereitung auf die Projektschau/Vernissage und wissenschaftliche und museale Weiterverwendung.
@@ -124,13 +133,13 @@ Das Projekt gliedert sich in folgende Arbeitspakete (AP), die weitgehend iterati
 
 | Phase / Fokus | Parallele Haupt-Aktivitäten | Workload |
 | :--- | :--- | :--- |
-| **Vorarbeitung & Konzeption** |  **AP0:** Systemarchitektur, Hardware-Recherche & Anforderungsanalyse | 40 h |
-| **Sprint 1: Core Systems & Firmware** | • **AP1:** Hardware-Layout, Gehäuse-3D-Druck & ESP32-Firmware<br> **AP2:** Max 9 Framework, OSC-Parsing & JS-Kepler-Prototyp | 72 h |
-| **Sprint 2: Physics & Spatial Core** |  **AP2:** Mathe-Verfeinerung (Inertia Engine) & UI-Design<br>• **AP3:** SPAT5-HOA-Decoder & Trajektorien-Mapping | 48 h |
-| **Sprint 3: Audio Synthesis & Routing** |  **AP3:** Dante DVS Multi-Channel Setup<br>• **AP4:** DSP-Synthese (CMB-Rauschen & Black-Hole-Palette) | 48 h |
-| **Sprint 4: Integration & Lab Testing** |  **AP4:** Partikel-Polarisation & Parameter-Kopplung<br>• **AP5:** Erste Einmessungen & Haptik-Fieldtests im 3D-Audio-Labor | 24 h |
-| **Sprint 5: Polishing & Deployment** |  **AP5:** Raumakustischer Feinschliff & Usability-Evaluation<br> **AP6:** Standalone-Export, Projekthandbuch & Open-Source-Prep | 48 h |
-| **Gesamt** | **Iterative Entwicklung über alle Arbeitspakete (AP0–AP6)** | **240 h** |
+| **Vorarbeitung & Konzeption** | • **AP0:** Systemarchitektur, Hardware-Recherche & Anforderungsanalyse | 40 h |
+| **Sprint 1: Core Systems & Firmware** | • **AP1:** Hardware-Layout, Gehäuse-3D-Druck & ESP32-Firmware<br>• **AP2:** Max 9 Framework, OSC-Parsing & JS-Kepler-Prototyp | 72 h |
+| **Sprint 2: Physics & Spatial Core** | • **AP2:** Mathe-Verfeinerung (Inertia Engine) & UI-Design<br>• **AP3:** SPAT5-HOA-Decoder, Orbit-Mapping & Sprach-Ankerpunkte | 48 h |
+| **Sprint 3: Audio Synthesis & Storytelling** | • **AP3:** Dante DVS Multi-Channel Setup<br>• **AP4:** Sprachsample-Schnitt, Dramaturgie & Ducking-Routing<br>• **AP5:** DSP-Synthese (CMB, Shepard-Ton & Black-Hole-Palette) | 48 h |
+| **Sprint 4: Integration & Lab Testing** | • **AP5:** Partikel-Polarisation & Parameter-Kopplung<br>• **AP6:** Erste Einmessungen & Haptik-Fieldtests im 3D-Audio-Labor | 24 h |
+| **Sprint 5: Polishing & Deployment** | • **AP6:** Raumakustischer Feinschliff & Usability-Evaluation<br>• **AP7:** Standalone-Export, Projekthandbuch & Open-Source-Prep | 48 h |
+| **Gesamt** | **Iterative Entwicklung über alle Arbeitspakete (AP0–AP7)** | **280 h** |
 
 ---
 
@@ -150,28 +159,30 @@ gantt
     axisFormat KW %V
 
     section Vorbereitung & Sprint 0
-    AP0 - Konzeption & Recherche     :2026-09-19, 2026-10-25
-    AP0 - Recherche (Live-Systeme besuchen)   :2026-11-11, 2026-11-25
-    Sprint 0 - Konzeption & Pitch   :crit, 2026-09-28, 2026-10-03
-    Sprint 0 - Projekthandbuch   :crit, 2026-10-19, 2026-10-30
+    AP0 - Konzeption & Recherche              :2026-09-19, 2026-10-25
+    AP0 - Recherche (Live-Systeme besuchen)   :2026-11-11, 2026-12-01
+    Sprint - Konzeption & Pitch               :crit, 2026-09-28, 2026-10-03
+    Sprint - Projekthandbuch                  :crit, 2026-10-19, 2026-10-30
+    Sprint - Projekthandbuch                  :crit, 2026-11-12, 2026-11-16
 
     section Sprint 1 & 2 (Hardware & Core)
-    AP1 - Hardware & Firmware        :active, 2026-10-20, 2026-11-29
-    Sprint 1 - Review (Core & FW)    :crit, 2026-11-22, 2026-11-29
-    AP2 - Max 9 & JS-Inertia         :active, 2026-10-28, 2026-12-20
-    Sprint 2 - Review (Physics)      :crit, 2026-12-07, 2026-12-13
+    AP1 - Hardware & Firmware                 :active, 2026-10-24, 2026-12-01
+    Sprint 1 - Review (Core & FW)             :crit, 2026-11-22, 2026-12-01
+    AP2 - Max 9 & JS-Inertia                  :active, 2026-10-24, 2026-12-20
+    Sprint 2 - Review (Physics)               :crit, 2026-12-07, 2026-12-13
 
     section Sprint 3 & 4 (Audio & Lab)
-    AP3 - Spatial Audio / SPAT5      :2026-11-25, 2027-01-03
-    AP4 - Sounddesign & Synthese     :2026-11-25, 2027-01-03
-    Sprint 3 - Review (Synthesis)    :crit, 2026-12-28, 2027-01-03
-    AP5 - Lab-Tests & Polishing      :2026-12-13, 2027-01-10
-    Sprint 4 - First Lab Test     :crit, 2026-12-14, 2026-12-18
-    Sprint 4 - Review (Lab Test)     :crit, 2027-01-04, 2027-01-10
+    AP3 - Spatial Audio / SPAT5               :2026-11-25, 2027-01-03
+    AP4 - Storytelling & Sprachsamples        :2026-11-25, 2026-12-27
+    AP5 - Sounddesign & Synthese              :2026-11-25, 2027-01-03
+    Sprint 3 - Review (Synthesis)             :crit, 2026-12-28, 2027-01-03
+    AP6 - Lab-Tests & Polishing               :2026-12-13, 2027-01-10
+    Sprint 4 - First Lab Test                 :crit, 2026-12-14, 2026-12-18
+    Sprint 4 - Review (Lab Test)              :crit, 2027-01-04, 2027-01-10
 
     section Sprint 5 (Release)
-    AP6 - Doku & Deployment          :2027-01-11, 2027-01-19
-    Sprint 5 - Review & Release      :crit, 2027-01-11, 2027-01-19
+    AP7 - Doku & Deployment                   :2027-01-11, 2027-01-19
+    Sprint 5 - Review & Release               :crit, 2027-01-11, 2027-01-19
 ```
 
 ---
@@ -200,13 +211,25 @@ gantt
 ### Literatur und Recherche
 
 | Quelle | Thema | Verfügbarkeit |
-| --- | --- | --- |
+| :--- | :--- | :--- |
 | Brian Clegg: *Gravitational Waves* | Wissenschaftliche Grundlagen der Raumzeit-Wellen | Fachliteratur / Privat |
-| Misner, Thorne, Wheeler: *Gravitation* | das Standardwerk für die Grundlagen der Gravitation und Raumzeit-Wellen. | Fachliteratur / Privat |
+| Misner, Thorne, Wheeler: *Gravitation* | Das Standardwerk für die Grundlagen der Gravitation und Raumzeit-Wellen | Fachliteratur / Privat |
+| Roger N. Shepard: *Circularity in Judgments of Relative Pitch* | Psychoakustische Grundlagen der Shepard-Ton-Illusion | Fachartikel / Online |
+| LIGO Open Science Center / Caltech Archiv | Original-Tondokumente und sonifizierte Gravitationswellen-Ereignisse (GW150914) | Online / Open Access |
 | Project Vanguard & Sputnik Dokumentation | Historische Design- und Konstruktionsreferenzen | Archivmaterial |
 | IRCAM SPAT5 Dokumentation | Higher Order Ambisonics & Perceptual Spatialization | Online / Open Source |
 | Besuch Technisches Museum Wien | Interaktive Exponat-Gestaltung & Vermittlungskonzepte | Vor Ort |
-| Besuch Live-Systeme (Weltraum System Ars Electronica Zentrum Linz) | Analyse von räumlicher Akustik und Live-Setups | Vor Ort |
+| Besuch Live-Systeme (Weltraum System Ars Electronica Center Linz) | Analyse von räumlicher Akustik und Live-Setups | Vor Ort |
+
+### Inspiration
+
+| Referenz / Quelle | Kernelement | Übertragung in *gravitationalWAVS* |
+| :--- | :--- | :--- |
+| **Public Service Broadcasting** – *Go!* ([YouTube](https://www.youtube.com/watch?v=an-9JHTpiLA)) & LIGO-Archiv (*„We did it“*, David Reitze) | Einbettung historischer Original-Zitate in musikalische Strukturen | Nutzung authentischer Sprachsamples als räumlich fixierte Ankerpunkte im Klangfeld |
+| **Public Service Broadcasting** – Alben *The Race for Space* & *Sputnik / Korolev* | Kombination aus historischer Raumfahrt-Dokumentation, Funkverkehr und elektronischer Musik | Ästhetisches Vorbild für das Sputnik-Controller-Design und den dokumentarischen Erzählstil |
+| **Shepard-Ton-Illusion** (Roger Shepard) | Psychoakustische Tonleiter mit endlos steigender oder fallender Tonhöhe | Klangliche Übersetzung der endlosen Kreisel- und Annäherungsbewegung (Inspiral) der Schwarzen Löcher |
+| **The Eagles** – *Journey of the Sorcerer* (*Per Anhalter durch die Galaxis* Intro) | Markante, kosmisch anmutende 80er-Synthesizer-Ästhetik | Klangfarbliche Inspiration für synthetische Texturen und retro-futuristische Raumfahrt-Atmosphäre |
+| **Räumliche Dramaturgie & Sprecher-Fokus** | Trennung zwischen statischer Erzählebene und dynamischer Effekt-Umgebung | Fixierung erklärender Stimmen im Raum, während Trägheit (Inertia) und Raumzeit-Verzerrungen um sie herum rotieren |
 
 ---
 
